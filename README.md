@@ -1,160 +1,174 @@
-# 📌 README — Job Portal (React + Django REST API)
+# React + Django Full Stack Job Portal
 
-## 📘 Project Overview
+A full-stack job portal application built with React and Django REST Framework, designed to connect job seekers with job opportunities through a responsive frontend and RESTful backend APIs.
 
-**Job Portal** is a full-stack web application built with **React (Vite + Tailwind CSS)** on the frontend and **Django + Django REST Framework** on the backend.
-This project enables users to **register, login, view job listings, and apply for jobs**. It also includes secure REST APIs, PostgreSQL database integration, and real-world app flows.
+## Overview
 
-Users can easily explore job opportunities while the backend securely handles authentication and data storage.
+Searching and applying for jobs requires users to navigate multiple platforms and manage their application information. This project explores how a centralized web application can simplify the process of discovering job listings and submitting applications.
 
----
+The frontend provides the user interface, while the Django backend manages application logic, API requests, authentication, and data persistence.
 
-## 📌 🧠 Features
+## Key Features
 
-✅ User Registration (React form + API)
-✅ Login & Authentication (JWT or Token based)
-✅ Job Listing API
-✅ Apply Job Endpoint
-✅ Prevent Duplicate Applications
-✅ PostgreSQL Integration
-✅ API Testing with Postman
-✅ Frontend UI with Tailwind CSS and React Router
+- **User Registration:** Create an account through the application.
+- **User Authentication:** Sign in and access supported application features.
+- **Job Listings:** Retrieve and display available job opportunities.
+- **Job Applications:** Submit applications through the supported workflow.
+- **REST API Integration:** Connect the React frontend to Django REST Framework endpoints.
+- **Data Validation:** Validate incoming data on the backend.
+- **Responsive Interface:** Build an accessible interface for browsing job opportunities.
+- **Database Integration:** Persist application data using the configured database.
 
----
+*Feature availability depends on the current implementation.*
 
-## 🛠 Tech Stack
+## Technology Stack
 
-| Layer        | Technology                             |
-| ------------ | -------------------------------------- |
-| Frontend     | React (Vite)                           |
-| UI Framework | Tailwind CSS                           |
-| Routing      | React Router                           |
-| Backend      | Django                                 |
-| API          | Django REST Framework                  |
-| Database     | PostgreSQL (Production) & SQLite (Dev) |
-| API Testing  | Postman                                |
+| Layer | Technologies |
+|---|---|
+| Frontend | React, JavaScript |
+| UI Styling | Tailwind CSS, if present in the project |
+| Routing | React Router, if configured |
+| Backend | Python, Django |
+| API | Django REST Framework |
+| Database | SQLite or PostgreSQL, according to configuration |
+| API Testing | Postman |
+| Version Control | Git and GitHub |
 
----
+## Application Architecture
 
-## 🔧 Installation & Setup
-
-### ✅ 1. Clone the Repository
-
-```bash
-git clone https://github.com/jvlcode/job-portal.git
-cd job-portal
+```text
+        User
+         |
+         v
+   React Frontend
+         |
+         v
+      REST API
+         |
+         v
+ Django REST Framework
+         |
+         v
+   Database Layer
 ```
 
----
+The frontend handles user interactions and displays data. The backend processes requests, validates inputs, applies application logic, and communicates with the database.
 
-### 🧩 2. Backend Setup (Django)
+## Project Structure
+
+The repository is organized around separate frontend and backend applications.
+
+```text
+react-django-job-portal/
+├── frontend/
+│   ├── src/
+│   └── package.json
+├── backend/
+│   ├── manage.py
+│   └── requirements.txt
+└── README.md
+```
+
+*The exact files and directories may differ depending on the current repository structure.*
+
+## Getting Started
+
+### Prerequisites
+
+- Python and pip
+- Node.js and npm
+- Git
+
+Install PostgreSQL only if your database configuration requires it.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Shreya-1210-del/react-django-job-portal.git
+cd react-django-job-portal
+```
+
+### 2. Set Up the Backend
+
+Open a terminal in the project root:
 
 ```bash
 cd backend
-python -m venv venv
-source venv/bin/activate        # (Windows: venv\Scripts\activate)
-pip install -r requirements.txt
+python -m venv .venv
 ```
 
-Create `.env` with database credentials:
+Activate the environment on Windows PowerShell:
 
-```
-SECRET_KEY=your_secret_key
-DEBUG=True
-DB_NAME=postgres_db_name
-DB_USER=postgres_user
-DB_PASSWORD=password
-DB_HOST=localhost
-DB_PORT=5432
+```powershell
+.\.venv\Scripts\Activate.ps1
 ```
 
-Run database migrations:
+Install dependencies:
 
 ```bash
-python manage.py makemigrations
+python -m pip install -r requirements.txt
+```
+
+Apply database migrations:
+
+```bash
 python manage.py migrate
 ```
 
-Start backend server:
+Start the Django development server:
 
 ```bash
 python manage.py runserver
 ```
 
----
+The backend normally runs at `http://127.0.0.1:8000/`.
 
-### 🚀 3. Frontend Setup (React)
+### 3. Set Up the Frontend
+
+Open a second terminal in the repository root:
 
 ```bash
-cd ../frontend
+cd frontend
 npm install
 npm run dev
 ```
 
-* Visit: `http://localhost:3000`
+Open the local URL printed by the frontend development server in your browser.
 
----
+### Configuration Notes
 
-## 📌 Folder Structure
+- Configure database credentials and Django settings according to the project's existing configuration.
+- Set up environment variables when required.
+- Check the frontend API base URL to ensure it points to the local backend.
+- Never commit secret keys, passwords, or production credentials.
 
-```
-job-portal/
-├── backend/           # Django backend
-│   ├── manage.py
-│   ├── jobportal/     # Django app
-│   └── requirements.txt
-├── frontend/          # React frontend (Vite)
-│   ├── src/
-│   └── package.json
-└── README.md
-```
+## Testing
 
----
+Test the application's supported workflows, including:
 
-## 🔗 API Endpoints (Examples)
+1. User registration and login.
+2. Retrieving and displaying job listings.
+3. Submitting a job application.
+4. Handling invalid requests and API errors.
+5. Verifying data persistence and authentication behavior.
 
-| Endpoint           | Method | Description       |
-| ------------------ | ------ | ----------------- |
-| `/api/register/`   | POST   | Register new user |
-| `/api/login/`      | POST   | Login & get token |
-| `/api/jobs/`       | GET    | List all jobs     |
-| `/api/jobs/apply/` | POST   | Apply for a job   |
-| `/api/user/`       | GET    | User profile      |
+Use the Django test framework and Postman where appropriate.
 
----
+## Future Improvements
 
-## 🧪 Testing with Postman
+- Advanced job search and filtering
+- Role-based access for job seekers and recruiters
+- Recruiter dashboard and job posting management
+- Application status tracking
+- Resume upload and profile management
+- Automated backend and frontend tests
+- Pagination, API validation, and improved error handling
+- Deployment with secure environment configuration
 
-1. Import Postman collection (if provided)
-2. Test Register API
-3. Test Login & Save Token
-4. Use Auth Token to test Job Listing API
-5. Apply for Jobs securely
+## Learning Outcomes
 
----
+This project demonstrates full-stack development concepts, frontend-backend integration, REST API design, authentication workflows, database operations, and practical debugging across a web application.
 
-## 🎯 What You Will Learn
+## License
 
-✔ Connecting React with Django REST API
-✔ Authentication in Django & React
-✔ Using Tailwind CSS + React UI
-✔ Deploy-ready full stack project
-✔ Real world API design & workflows
-
----
-
-## 💡 Contribution
-
-Contributions are welcome!
-To contribute:
-
-1. Fork the repo
-2. Create a feature branch
-3. Submit a pull request
-
----
-
-## ⭐ Support / Feedback
-
-If you found this project helpful, please give it a ⭐
-Let me know if you want **Level-2 features**, deployment setup, or advanced enhancements!
+Refer to the repository's license file for the applicable license terms.
